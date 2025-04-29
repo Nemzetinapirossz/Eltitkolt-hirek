@@ -97,6 +97,7 @@
             padding: 30px;
             max-width: 1200px;
             margin: 20px auto;
+            /* Alapértelmezetten látható */
         }
 
         /* Grid Elemek (Kártyák) */
@@ -167,7 +168,7 @@
         }
         /* A link elem kapja a hátteret */
         .grid-item.clickbait-highlight a {
-            background-image: url('kepek/tel.jpg'); /* HÁTTÉRKÉP BEÁLLÍTÁSA */
+            background-image: url('kepek/tel.jpg'); /* HÁTTÉRKÉP BEÁLLÍTÁSA - CSERÉLD LE! */
             background-size: cover;
             background-position: center;
             border-radius: 5px; /* Lekerekítés a linken belül */
@@ -177,7 +178,7 @@
         }
          /* A tartalom div kapja a féláttetsző hátteret */
         .grid-item.clickbait-highlight .card-content {
-            background-image: linear-gradient(rgba(0, 0, 0, 0.3),rgb(0, 0, 0)) ; /* Féláttetsző sötét háttér */
+            background-color: rgba(0, 0, 0, 0.7); /* Féláttetsző sötét háttér */
             padding: 20px; /* Nagyobb padding */
             width: 100%; /* Teljes szélesség */
             box-sizing: border-box; /* Padding beleszámít a szélességbe */
@@ -202,6 +203,40 @@
             margin-bottom: 0; /* Nincs alsó margó */
         }
         /* Nincs szükség külön img stílusra a clickbait kártyánál */
+
+        /* Fő Cikk Tartalom */
+        #article-content {
+            display: none; /* Alapból rejtett */
+            max-width: 900px;
+            margin: 30px auto;
+            padding: 30px;
+            background-color: #fff;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            border: 1px solid #ddd;
+            border-radius: 8px;
+        }
+        #article-content h2 {
+            text-align: center;
+            font-size: 2.2em;
+            margin-bottom: 25px;
+            color: #333;
+            border-bottom: 2px solid #eee;
+            padding-bottom: 15px;
+        }
+        #article-content p {
+            line-height: 1.7;
+            text-align: justify;
+            margin-bottom: 1.5em;
+            color: #444;
+        }
+        #article-content img.article-image { /* Opcionális kép a cikkben */
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 20px auto;
+            border-radius: 5px;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+        }
 
 
         /* Reszponzivitás és Hamburger Menü Stílusok */
@@ -269,6 +304,8 @@
             }
              .grid-item.clickbait-highlight h2 { font-size: 1.6em; }
              .grid-item.clickbait-highlight { min-height: 250px; } /* Kisebb magasság mobilon */
+             #article-content { padding: 20px; }
+             #article-content h2 { font-size: 1.8em; }
          }
 
     </style>
@@ -276,29 +313,25 @@
 <body>
 
     <nav>
-        <!-- Opcionális Cím -->
-        <a href="#" class="nav-title">Púdermentes</a>
-
-        <!-- Hamburger Gomb -->
+        <a href="#" class="nav-title">Pletyka Portál</a>
         <button class="hamburger-menu" aria-label="Menü megnyitása/bezárása" aria-expanded="false">
             <span></span>
             <span></span>
             <span></span>
         </button>
-
-        <!-- Navigációs Linkek -->
         <ul class="nav-links">
-            <li><a href="#" class="active">Kezdőlap</a></li>
-            <li><a href="#">Friss Pletykák</a></li>
-            <li><a href="#">Sztárhírek</a></li>
-            <li><a href="#">Kapcsolat</a></li>
+            <!-- Módosított href értékek -->
+            <li><a href="#home" class="active">Kezdőlap</a></li>
+            <li><a href="#friss">Friss Pletykák</a></li>
+            <li><a href="#sztarhirek">Sztárhírek</a></li>
+            <li><a href="#kapcsolat">Kapcsolat</a></li>
         </ul>
     </nav>
+    <!-- Kezdőlap Tartalom -->
     <main class="homepage-grid">
-        <!-- Clickbait Kártya: Az <img> tag eltávolítva, a háttérkép CSS-ben van beállítva az <a> tagre -->
+        <!-- Clickbait Kártya: ID hozzáadva a linkhez -->
         <div class="grid-item large clickbait-highlight">
-            <a href="#" aria-label="Döbbenetes Hír! Ezt NEM FOGOD ELHINNI!">
-                <!-- A .card-content div most a link közvetlen gyereke, és ez kapja a sötét hátteret -->
+            <a href="#dobbenetes-hir" id="show-article-link" aria-label="Döbbenetes Hír! Ezt NEM FOGOD ELHINNI!">
                 <div class="card-content">
                     <h2>Döbbenetes Hír! Ezt NEM FOGOD ELHINNI!</h2>
                     <p>Kiderült a titok, amit mindenki tudni akart! Kattints és nézd meg azonnal...</p>
@@ -322,7 +355,8 @@
                  </div>
             </a>
         </div>
-        <div class="grid-item medium">
+        <!-- ... többi kártya ugyanúgy ... -->
+         <div class="grid-item medium">
              <a href="#">
                 <img src="https://via.placeholder.com/300x180?text=Sztárfotók" alt="Sztárfotók">
                  <div class="card-content">
@@ -357,21 +391,92 @@
         </div>
     </main>
 
+    <!-- Fő Cikk Tartalma (Alapból rejtett) -->
+    <article id="article-content">
+        <h2>Hodvogner Emília születésnapját a Nemzeti Napirossz szervezi – de senki sem tud semmit!</h2>
+        <img src="kepek/IMG_1824.jpg" alt="Részletes kép a hírről" class="article-image">
+        <p>Olvasóink, figyelem! Újabb különös, de rendkívül izgalmas fejlemény érkezett a közélet színpadáról: a Nemzeti Napirossz hivatalosan bejelentette, hogy ők szervezik Emi születésnapi rendezvényét. És… ennyi.</p>
+        <p>Nem tudni mikor. Nem tudni hol. Nem tudni hogyan. De azt biztosra vehetjük: valami készül. És valami nagy.</p>
+        <p>A bejelentést a Napirossz tette közzé, ám a közleményben egyetlen mondat állt: “Az esemény szervezés alatt van. Részletek? Majd ha eljött az ideje.”</p>
+        <p>Ez a titokzatosság természetesen felcsigázta a Nemzeti Napirossz olvasóit, akik azóta várják a megjelenő újságot, az új izgalmas hírekkel!</p>
+        <p>Miért ekkora titok?
+            Többen már összeesküvés-elméleteket gyártanak: <br>
+            – Lehet, hogy maga Emi sem tudja, mikor lesz? <br>
+            – Talán a bulinak már vége, vagy éppen most zajlik?? <br>
+            – Vagy a Napirossz szándékosan csak utólag közöl bármit, ami tőlük igencsak szokatlan?</p>
+        <p>A szerkesztőség információi szerint a Nemzeti Napirossz csak akkor fog ténylegesen új lapszámmal jelentkezni, amikor az esemény már lezajlott. Addig mindenki csak találgat. Annyit azonban még elárult a Napirossz szerkesztősége, hogy szűk körű esemény lesz, így az információk biztos kezekben marad.</p>
+        <p>Egy biztos: ha egy ország figyel valamit, az nem egy politikai döntés, nem egy futballmeccs, hanem Hodvogner Emília rejtélyes születésnapja. És hogy mi várható? Csak tippelni lehet.</p>
+        <p>Tartsatok velünk – vagy legalább naponta frissítsétek az oldalt, mert ha egyszer felbukkan a hír, nem akartok lemaradni!</p>
+    </article>
+
     <!-- Ide jöhetne egy lábléc (footer) később -->
 
     <script>
+        // Hamburger menü logikája
         const hamburgerButton = document.querySelector('.hamburger-menu');
         const navElement = document.querySelector('nav');
 
         hamburgerButton.addEventListener('click', () => {
-            // Toggle a class on the nav element itself
             navElement.classList.toggle('mobile-nav-open');
-
-            // Toggle the aria-expanded attribute for accessibility
             const isExpanded = navElement.classList.contains('mobile-nav-open');
             hamburgerButton.setAttribute('aria-expanded', isExpanded);
         });
-    </script>
 
+        // Tartalomváltás logikája
+        const articleLink = document.getElementById('show-article-link');
+        const homepageContent = document.querySelector('.homepage-grid');
+        const articleContent = document.getElementById('article-content');
+        const navLinkHome = document.querySelector('nav ul.nav-links li a[href="#home"]');
+        const navLinkFriss = document.querySelector('nav ul.nav-links li a[href="#friss"]');
+        // Szükség lehet a többi linkre is, ha azokat is kezelni akarjuk a jövőben
+
+        // Funkció a nézet váltásához
+        function showHomepage() {
+            homepageContent.style.display = 'flex'; // Visszaállítjuk flex-re
+            articleContent.style.display = 'none';
+            navLinkHome.classList.add('active');
+            navLinkFriss.classList.remove('active');
+            // Itt lehetne a többi linkről is levenni az active class-t, ha szükséges
+            window.scrollTo({ top: 0, behavior: 'smooth' }); // Opcionális görgetés
+        }
+
+        function showArticle() {
+            homepageContent.style.display = 'none';
+            articleContent.style.display = 'block';
+            navLinkHome.classList.remove('active');
+            navLinkFriss.classList.add('active');
+            // Itt lehetne a többi linkről is levenni az active class-t, ha szükséges
+            window.scrollTo({ top: 0, behavior: 'smooth' }); // Opcionális görgetés
+        }
+
+        // Ellenőrizzük, hogy minden elem megvan-e
+        if (articleLink && homepageContent && articleContent && navLinkHome && navLinkFriss) {
+
+            // Eseményfigyelő a "Döbbenetes Hír" linkre
+            articleLink.addEventListener('click', (event) => {
+                event.preventDefault(); // Megakadályozza az oldal ugrását a #hash-re
+                showArticle();
+            });
+
+            // Eseményfigyelő a "Kezdőlap" nav linkre
+            navLinkHome.addEventListener('click', (event) => {
+                event.preventDefault(); // Megakadályozza az oldal ugrását a #hash-re
+                showHomepage();
+
+                // Ha a mobil menü nyitva van, zárjuk be
+                if (navElement.classList.contains('mobile-nav-open')) {
+                    navElement.classList.remove('mobile-nav-open');
+                    hamburgerButton.setAttribute('aria-expanded', 'false');
+                }
+            });
+
+            // Opcionális: Kezelhetnénk a többi nav linket is hasonlóan,
+            // ha azok más tartalmakat jelenítenének meg.
+            // Pl. navLinkFriss.addEventListener('click', ...);
+
+        } else {
+            console.error("Hiba: A tartalomváltáshoz szükséges elemek egyike nem található!");
+        }
+    </script>
 </body>
 </html>
