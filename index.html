@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pletyka Portál - Kezdőlap</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            background-color: #f4f4f4;
+        }
+        /* Navigációs Sáv */
+        nav {
+            background-color: #333;
+            color: #fff;
+            padding: 10px 15px; /* Padding hozzáadva oldalt */
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            /* Flexbox a belső elemek (logo/cím és menü) igazításához */
+            display: flex;
+            justify-content: space-between; /* Elemek szétosztása */
+            align-items: center;
+        }
+        /* Opcionális: Oldal címe a nav sávban */
+        .nav-title {
+            font-size: 1.2em;
+            font-weight: bold;
+            color: #fff;
+            text-decoration: none;
+        }
+
+        nav ul.nav-links {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex; /* Alapértelmezetten flex (desktop) */
+            justify-content: center;
+        }
+        nav ul.nav-links li {
+            margin: 0 15px;
+        }
+        nav ul.nav-links li a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+            padding: 5px 10px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        nav ul.nav-links li a:hover, nav ul.nav-links li a.active {
+            background-color: #555;
+            border-radius: 4px;
+        }
+
+        /* Hamburger Menü Gomb */
+        .hamburger-menu {
+            display: none; /* Alapból rejtett (desktop) */
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 5px;
+        }
+        .hamburger-menu span {
+            display: block;
+            width: 25px;
+            height: 3px;
+            background-color: #fff;
+            margin: 5px 0;
+            border-radius: 1px;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+        }
+
+        /* Fejléc */
+        header {
+            width: 100%;
+            height: 350px;
+            background-color: #e0e0e0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+        header img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        /* Kezdőlap Grid Konténer */
+        .homepage-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            padding: 30px;
+            max-width: 1200px;
+            margin: 20px auto;
+        }
+
+        /* Grid Elemek (Kártyák) */
+        .grid-item {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+            min-width: 250px;
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+        }
+        .grid-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+        }
+        .grid-item a {
+            text-decoration: none;
+            color: inherit;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+        .grid-item img { /* Normál kártyák képei */
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            display: block;
+        }
+        .card-content { /* Normál kártyák tartalma */
+            padding: 15px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        .grid-item h2 {
+            margin-top: 0;
+            margin-bottom: 10px;
+            font-size: 1.3em;
+            color: #333;
+        }
+        .grid-item p {
+            margin-bottom: 0;
+            color: #555;
+            font-size: 0.9em;
+            flex-grow: 1;
+        }
+        .grid-item.large { flex-basis: 40%; min-width: 350px; }
+        .grid-item.medium { flex-basis: 30%; }
+        .grid-item.small { flex-basis: 20%; min-width: 200px; }
+        .grid-item.small img { height: 120px; }
+
+        /* Clickbait Kártya Kiemelés */
+        .grid-item.clickbait-highlight {
+            flex-basis: 100%;
+            border: 3px solid #FF1493;
+            background-color: transparent; /* Nincs háttérszín a kártyán */
+            box-shadow: 0 5px 15px rgba(255, 20, 147, 0.4);
+            padding: 0; /* Nincs belső padding a kártyán */
+            min-height: 500px; /* Adjunk neki minimális magasságot */
+            position: relative; /* Pozicionáláshoz */
+        }
+        .grid-item.clickbait-highlight:hover {
+             box-shadow: 0 8px 25px rgba(255, 20, 147, 0.6);
+             transform: translateY(-7px);
+        }
+        /* A link elem kapja a hátteret */
+        .grid-item.clickbait-highlight a {
+            background-image: url('kepek/tel.jpg'); /* HÁTTÉRKÉP BEÁLLÍTÁSA */
+            background-size: cover;
+            background-position: center;
+            border-radius: 5px; /* Lekerekítés a linken belül */
+            justify-content: flex-end; /* Tartalom tolása az aljára */
+            position: relative; /* Overlay pozicionáláshoz */
+            overflow: hidden; /* Biztosítja a belső lekerekítést */
+        }
+         /* A tartalom div kapja a féláttetsző hátteret */
+        .grid-item.clickbait-highlight .card-content {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.3),rgb(0, 0, 0)) ; /* Féláttetsző sötét háttér */
+            padding: 20px; /* Nagyobb padding */
+            width: 100%; /* Teljes szélesség */
+            box-sizing: border-box; /* Padding beleszámít a szélességbe */
+            flex-grow: 0; /* Ne nőjön a tartalom */
+        }
+
+        .grid-item.clickbait-highlight h2 {
+            color: #fff; /* Fehér szöveg */
+            font-size: 1.8em;
+            text-transform: uppercase;
+            text-align: center;
+            font-weight: 900; /* Vastagabb */
+            margin-bottom: 10px;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.5); /* Szövegárnyék olvashatósághoz */
+        }
+         .grid-item.clickbait-highlight p {
+            color: #eee; /* Világosszürke/fehér szöveg */
+            font-size: 1.1em;
+            text-align: center;
+            font-weight: 500;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5); /* Szövegárnyék */
+            margin-bottom: 0; /* Nincs alsó margó */
+        }
+        /* Nincs szükség külön img stílusra a clickbait kártyánál */
+
+
+        /* Reszponzivitás és Hamburger Menü Stílusok */
+        @media (max-width: 768px) {
+            .hamburger-menu {
+                display: block; /* Hamburger gomb megjelenítése mobilon */
+            }
+
+            nav ul.nav-links {
+                display: none; /* Menü elrejtése alapból mobilon */
+                flex-direction: column;
+                position: absolute;
+                top: 100%; /* Nav sáv alá pozícionálás */
+                left: 0;
+                width: 100%;
+                background-color: #444; /* Kicsit más háttér a lenyíló menünek */
+                padding: 10px 0;
+                box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            }
+
+            nav.mobile-nav-open ul.nav-links {
+                display: flex; /* Menü megjelenítése, ha a nav megkapja a class-t */
+            }
+
+            nav ul.nav-links li {
+                margin: 10px 0; /* Függőleges térköz */
+                text-align: center;
+            }
+            nav ul.nav-links li a {
+                padding: 10px 15px;
+                display: block; /* Teljes szélességű linkek */
+            }
+            nav ul.nav-links li a:hover, nav ul.nav-links li a.active {
+                background-color: #666; /* Kicsit más hover szín */
+            }
+
+            /* Hamburger ikon animáció (X lesz belőle) */
+            nav.mobile-nav-open .hamburger-menu span:nth-child(1) {
+                transform: translateY(8px) rotate(45deg);
+            }
+            nav.mobile-nav-open .hamburger-menu span:nth-child(2) {
+                opacity: 0;
+            }
+            nav.mobile-nav-open .hamburger-menu span:nth-child(3) {
+                transform: translateY(-8px) rotate(-45deg);
+            }
+
+
+            /* Grid elemek mobilon */
+            .grid-item:not(.clickbait-highlight),
+            .grid-item.large:not(.clickbait-highlight),
+            .grid-item.medium:not(.clickbait-highlight),
+            .grid-item.small:not(.clickbait-highlight) {
+                flex-basis: calc(50% - 10px);
+                min-width: unset;
+            }
+        }
+
+         @media (max-width: 480px) {
+             .grid-item:not(.clickbait-highlight),
+            .grid-item.large:not(.clickbait-highlight),
+            .grid-item.medium:not(.clickbait-highlight),
+            .grid-item.small:not(.clickbait-highlight) {
+                flex-basis: 100%;
+            }
+             .grid-item.clickbait-highlight h2 { font-size: 1.6em; }
+             .grid-item.clickbait-highlight { min-height: 250px; } /* Kisebb magasság mobilon */
+         }
+
+    </style>
+</head>
+<body>
+
+    <nav>
+        <!-- Opcionális Cím -->
+        <a href="#" class="nav-title">Púdermentes</a>
+
+        <!-- Hamburger Gomb -->
+        <button class="hamburger-menu" aria-label="Menü megnyitása/bezárása" aria-expanded="false">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+        <!-- Navigációs Linkek -->
+        <ul class="nav-links">
+            <li><a href="#" class="active">Kezdőlap</a></li>
+            <li><a href="#">Friss Pletykák</a></li>
+            <li><a href="#">Sztárhírek</a></li>
+            <li><a href="#">Kapcsolat</a></li>
+        </ul>
+    </nav>
+    <main class="homepage-grid">
+        <!-- Clickbait Kártya: Az <img> tag eltávolítva, a háttérkép CSS-ben van beállítva az <a> tagre -->
+        <div class="grid-item large clickbait-highlight">
+            <a href="#" aria-label="Döbbenetes Hír! Ezt NEM FOGOD ELHINNI!">
+                <!-- A .card-content div most a link közvetlen gyereke, és ez kapja a sötét hátteret -->
+                <div class="card-content">
+                    <h2>Döbbenetes Hír! Ezt NEM FOGOD ELHINNI!</h2>
+                    <p>Kiderült a titok, amit mindenki tudni akart! Kattints és nézd meg azonnal...</p>
+                </div>
+            </a>
+        </div>
+        <!-- Többi kártya -->
+        <div class="grid-item medium">
+             <a href="#">
+                <img src="https://via.placeholder.com/300x180?text=Exkluzív+Interjú" alt="Exkluzív Interjú">
+                <div class="card-content">
+                    <h2>Exkluzív Interjú</h2>
+                </div>
+            </a>
+        </div>
+        <div class="grid-item small">
+             <a href="#">
+                <img src="https://via.placeholder.com/200x120?text=Gyors+Pletyka" alt="Gyors Pletyka">
+                 <div class="card-content">
+                    <h2>Gyors Pletyka</h2>
+                 </div>
+            </a>
+        </div>
+        <div class="grid-item medium">
+             <a href="#">
+                <img src="https://via.placeholder.com/300x180?text=Sztárfotók" alt="Sztárfotók">
+                 <div class="card-content">
+                    <h2>Sztárfotók</h2>
+                 </div>
+            </a>
+        </div>
+         <div class="grid-item small">
+             <a href="#">
+                <img src="https://via.placeholder.com/200x120?text=Napi+Ciki" alt="Napi Ciki">
+                 <div class="card-content">
+                    <h2>Napi Ciki</h2>
+                 </div>
+            </a>
+        </div>
+        <div class="grid-item large">
+             <a href="#">
+                <img src="https://via.placeholder.com/400x180?text=Heti+Összefoglaló" alt="Heti Összefoglaló">
+                 <div class="card-content">
+                    <h2>Heti Összefoglaló</h2>
+                    <p>A hét legérdekesebb pletykáinak összefoglalója itt olvasható.</p>
+                 </div>
+            </a>
+        </div>
+         <div class="grid-item medium">
+             <a href="#">
+                <img src="https://via.placeholder.com/300x180?text=Programajánló" alt="Programajánló">
+                 <div class="card-content">
+                    <h2>Programajánló</h2>
+                 </div>
+            </a>
+        </div>
+    </main>
+
+    <!-- Ide jöhetne egy lábléc (footer) később -->
+
+    <script>
+        const hamburgerButton = document.querySelector('.hamburger-menu');
+        const navElement = document.querySelector('nav');
+
+        hamburgerButton.addEventListener('click', () => {
+            // Toggle a class on the nav element itself
+            navElement.classList.toggle('mobile-nav-open');
+
+            // Toggle the aria-expanded attribute for accessibility
+            const isExpanded = navElement.classList.contains('mobile-nav-open');
+            hamburgerButton.setAttribute('aria-expanded', isExpanded);
+        });
+    </script>
+
+</body>
+</html>
