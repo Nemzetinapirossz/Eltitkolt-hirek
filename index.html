@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="./style.css">
 </head>
 <body>
-
+    
     <nav>
         <a href="#home" class="nav-title">Pletyka Portál</a> <!-- Changed href to #home -->
         <button class="hamburger-menu" aria-label="Menü megnyitása/bezárása" aria-expanded="false">
@@ -17,9 +17,9 @@
         </button>
         <ul class="nav-links">
             <!-- Módosított href értékek -->
-            <li><a href="#home" class="active">Kezdőlap</a></li>
-            <li><a href="./focikk.html">Friss Pletykák</a></li>
-            <li><a href="#sztarhirek">Sztárfotók</a></li>
+            <li><a href="index.html" class="active">Kezdőlap</a></li>
+            <li><a href="focikk.html">Friss Pletykák</a></li>
+            <li><a href="sztarfotok.html">Sztárfotók</a></li>
             <li><a href="#kapcsolat">Kapcsolat</a></li>
         </ul>
     </nav>
@@ -27,7 +27,7 @@
     <main class="homepage-grid">
         <!-- Clickbait Kártya: ID hozzáadva a linkhez -->
         <div class="grid-item large clickbait-highlight">
-            <a href="#dobbenetes-hir" id="show-article-link" aria-label="Döbbenetes Hír! Ezt NEM FOGOD ELHINNI!">
+            <a href="./focikk.html" id="show-article-link" aria-label="Döbbenetes Hír! Ezt NEM FOGOD ELHINNI!">
                 <div class="card-content">
                     <h4>Kiderült a titok, amit mindenki tudni akart!</h4>
                 </div>
@@ -35,7 +35,7 @@
         </div>
         <!-- Többi kártya -->
         <div class="grid-item medium">
-             <a href="#"> <!-- Ennek a linknek nem kell ID, mert nem vált nézetet -->
+             <a href=""> <!-- Ennek a linknek nem kell ID, mert nem vált nézetet -->
                 <img src="https://via.placeholder.com/300x180?text=Exkluzív+Interjú" alt="Exkluzív Interjú">
                 <div class="card-content">
                     <h2>Exkluzív Interjú</h2>
@@ -52,7 +52,7 @@
         </div>
          <!-- Sztárfotók kártya: ID hozzáadva a linkhez -->
          <div class="grid-item medium">
-             <a href="#sztarhirek" id="show-slider-link"> <!-- ID hozzáadva -->
+             <a href="./sztarfotok.html" id="show-slider-link"> <!-- ID hozzáadva -->
                 <img src="https://via.placeholder.com/300x180?text=Sztárfotók" alt="Sztárfotók">
                  <div class="card-content">
                     <h2>Sztárfotók</h2>
@@ -87,192 +87,10 @@
     </main>
 
     <!-- Image Slider Tartalma (Alapból rejtett) -->
-    <section id="image-slider-content">
-        <h2>Sztárfotók Galéria</h2>
-        <div class="slider-container">
-            <img src="https://via.placeholder.com/700x500?text=Sztárfotó+1" alt="Sztárfotó 1" class="slider-image" id="current-slider-image">
-            <button class="slider-button prev-button" id="prev-slide-button" aria-label="Előző kép">&lt;</button>
-            <button class="slider-button next-button" id="next-slide-button" aria-label="Következő kép">&gt;</button>
-        </div>
-    </section>
+   
 
     <!-- Ide jöhetne egy lábléc (footer) később -->
 
-    <script>
-        // Hamburger menü logikája
-        const hamburgerButton = document.querySelector('.hamburger-menu');
-        const navElement = document.querySelector('nav');
-        const navLinksContainer = document.querySelector('nav ul.nav-links');
-
-        hamburgerButton.addEventListener('click', () => {
-            navElement.classList.toggle('mobile-nav-open');
-            const isExpanded = navElement.classList.contains('mobile-nav-open');
-            hamburgerButton.setAttribute('aria-expanded', isExpanded);
-        });
-
-        // Mobil menü bezárása link kattintáskor
-        function closeMobileMenu() {
-            if (navElement.classList.contains('mobile-nav-open')) {
-                navElement.classList.remove('mobile-nav-open');
-                hamburgerButton.setAttribute('aria-expanded', 'false');
-            }
-        }
-
-        // Tartalomváltás logikája
-        const articleLink = document.getElementById('show-article-link');
-        const sliderLink = document.getElementById('show-slider-link'); // Link a sliderhez a kártyán
-        const homepageContent = document.querySelector('.homepage-grid');
-        const articleContent = document.getElementById('article-content');
-        const sliderContent = document.getElementById('image-slider-content'); // Slider tartalom elem
-
-        // Navigációs linkek
-        const navLinkHome = document.querySelector('nav ul.nav-links li a[href="#home"]');
-        const navLinkFriss = document.querySelector('nav ul.nav-links li a[href="#friss"]'); // Cikkhez tartozó nav link
-        const navLinkSztarhirek = document.querySelector('nav ul.nav-links li a[href="#sztarhirek"]'); // Sliderhez tartozó nav link
-        const navTitleLink = document.querySelector('.nav-title'); // Navigációs cím link
-
-        // Slider elemek
-        const sliderImage = document.getElementById('current-slider-image');
-        const prevButton = document.getElementById('prev-slide-button');
-        const nextButton = document.getElementById('next-slide-button');
-
-        // Képek forrásai a sliderhez (helyettesítsd valós URL-ekkel)
-        const imageSources = [
-            'kepek/sztarfoto1',
-            'kepek/sztarfoto2',
-            'kepek/sztarfoto3',
-            'kepek/sztarfoto4',
-            'kepek/sztarfoto5',
-
-        ];
-        let currentImageIndex = 0;
-
-        // Funkció a nézet váltásához
-        function showHomepage() {
-            homepageContent.style.display = 'flex'; // Visszaállítjuk flex-re
-            articleContent.style.display = 'none';
-            sliderContent.style.display = 'none'; // Slider elrejtése
-            setActiveNavLink(navLinkHome);
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
-
-        function showArticle() {
-            homepageContent.style.display = 'none';
-            articleContent.style.display = 'block';
-            sliderContent.style.display = 'none'; // Slider elrejtése
-            setActiveNavLink(navLinkFriss); // A "Friss Pletykák" link lesz aktív
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
-
-        function showSlider() {
-            homepageContent.style.display = 'none';
-            articleContent.style.display = 'none';
-            sliderContent.style.display = 'block'; // Slider megjelenítése
-            setActiveNavLink(navLinkSztarhirek); // A "Sztárhírek" link lesz aktív
-            // Beállítjuk az aktuális képet a sliderben
-            if (sliderImage && imageSources.length > 0) {
-                sliderImage.src = imageSources[currentImageIndex];
-                sliderImage.alt = `Sztárfotó ${currentImageIndex + 1}`;
-            }
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
-
-        // Funkció az aktív nav link beállításához
-        function setActiveNavLink(activeLink) {
-            // Összes linkről eltávolítjuk az 'active' class-t
-            document.querySelectorAll('nav ul.nav-links li a').forEach(link => {
-                link.classList.remove('active');
-            });
-            // Hozzáadjuk az 'active' class-t a megadott linkhez
-            if (activeLink) {
-                activeLink.classList.add('active');
-            }
-        }
-
-        // Slider léptető funkciók
-        function showNextImage() {
-            currentImageIndex = (currentImageIndex + 1) % imageSources.length; // Ciklikus léptetés
-            sliderImage.src = imageSources[currentImageIndex];
-            sliderImage.alt = `Sztárfotó ${currentImageIndex + 1}`;
-        }
-
-        function showPrevImage() {
-            currentImageIndex = (currentImageIndex - 1 + imageSources.length) % imageSources.length; // Ciklikus léptetés visszafelé
-            sliderImage.src = imageSources[currentImageIndex];
-            sliderImage.alt = `Sztárfotó ${currentImageIndex + 1}`;
-        }
-
-        // Ellenőrizzük, hogy minden szükséges elem megvan-e a DOM-ban
-        if (hamburgerButton && navElement && navLinksContainer &&
-            articleLink && sliderLink && homepageContent && articleContent && sliderContent &&
-            navLinkHome && navLinkFriss && navLinkSztarhirek && navTitleLink &&
-            sliderImage && prevButton && nextButton) {
-
-            // Eseményfigyelő a "Döbbenetes Hír" (cikk) kártya linkre
-            articleLink.addEventListener('click', (event) => {
-                event.preventDefault(); // Megakadályozza az oldal ugrását a #hash-re
-                showArticle();
-                closeMobileMenu(); // Mobil menü bezárása kattintáskor
-            });
-
-            // Eseményfigyelő a "Sztárfotók" (slider) kártya linkre
-            sliderLink.addEventListener('click', (event) => {
-                event.preventDefault();
-                showSlider();
-                closeMobileMenu(); // Mobil menü bezárása kattintáskor
-            });
-
-            // Eseményfigyelő a "Kezdőlap" nav linkre
-            navLinkHome.addEventListener('click', (event) => {
-                event.preventDefault();
-                showHomepage();
-                closeMobileMenu();
-            });
-
-            // Eseményfigyelő a "Pletyka Portál" cím linkre (vissza a kezdőlapra)
-            navTitleLink.addEventListener('click', (event) => {
-                event.preventDefault();
-                showHomepage();
-                closeMobileMenu();
-            });
-
-            // Eseményfigyelő a "Friss Pletykák" nav linkre
-            navLinkFriss.addEventListener('click', (event) => {
-                event.preventDefault();
-                showArticle();
-                closeMobileMenu();
-            });
-
-            // Eseményfigyelő a "Sztárhírek" nav linkre
-            navLinkSztarhirek.addEventListener('click', (event) => {
-                event.preventDefault();
-                showSlider();
-                closeMobileMenu();
-            });
-
-            // Eseményfigyelők a slider gombokhoz
-            nextButton.addEventListener('click', showNextImage);
-            prevButton.addEventListener('click', showPrevImage);
-
-            // Eseményfigyelő az összes nav linkre a mobil menü bezárásához
-            navLinksContainer.querySelectorAll('a').forEach(link => {
-                link.addEventListener('click', closeMobileMenu);
-            });
-
-        } else {
-            console.error("Hiba: A tartalomváltáshoz vagy a sliderhez szükséges elemek egyike nem található a DOM-ban!");
-            // Log which elements are missing for easier debugging
-            console.log({
-                hamburgerButton, navElement, navLinksContainer,
-                articleLink, sliderLink, homepageContent, articleContent, sliderContent,
-                navLinkHome, navLinkFriss, navLinkSztarhirek, navTitleLink,
-                sliderImage, prevButton, nextButton
-            });
-        }
-
-        // Kezdeti állapot beállítása (Kezdőlap mutatása)
-        showHomepage();
-
-    </script>
+    <script src="./script.js"></script>
 </body>
 </html>

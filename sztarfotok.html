@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>sztarfotok</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    
+
+    <nav>
+        <a href="#home" class="nav-title">Pletyka Portál</a> <!-- Changed href to #home -->
+        <button class="hamburger-menu" aria-label="Menü megnyitása/bezárása" aria-expanded="false">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+        <ul class="nav-links">
+            <!-- Módosított href értékek -->
+            <li><a href="index.html">Kezdőlap</a></li>
+            <li><a href="focikk.html">Friss Pletykák</a></li>
+            <li><a href="sztarfotok.html" class="active">Sztárfotók</a></li>
+            <li><a href="#kapcsolat">Kapcsolat</a></li>
+        </ul>
+    </nav>
+
+    <section id="image-slider-content">
+        <h2>Sztárfotók Galéria</h2>
+        <div class="slider-container">
+            <img src="https://via.placeholder.com/700x500?text=Sztárfotó+1" alt="Sztárfotó 1" class="slider-image" id="current-slider-image">
+            <button class="slider-button prev-button" id="prev-slide-button" aria-label="Előző kép">&lt;</button>
+            <button class="slider-button next-button" id="next-slide-button" aria-label="Következő kép">&gt;</button>
+        </div>
+    </section>
+    <script> </script>
+</body>
+</html>
