@@ -37,12 +37,20 @@
 
  // Képek forrásai a sliderhez (helyettesítsd valós URL-ekkel)
  const imageSources = [
-     'kepek/sztarfoto1',
-     'kepek/sztarfoto2',
-     'kepek/sztarfoto3',
-     'kepek/sztarfoto4',
-     'kepek/sztarfoto5',
-
+     './kepek/szf1.jpg',
+     './kepek/szf2.jpg',
+     './kepek/szf3.jpg',
+     './kepek/szf4.jpg',
+     './kepek/szf5.jpg',
+     './kepek/szf6.jpg',
+     './kepek/szf7.jpg',
+     './kepek/szf8.jpg',
+     './kepek/szf9.jpg',
+     './kepek/szf10.jpg',
+     './kepek/szf11.jpg',
+     './kepek/szf12.jpg',
+     './kepek/szf13.jpg',
+     './kepek/szf14.jpg',
  ];
  let currentImageIndex = 0;
  // Funkció az aktív nav link beállításához
@@ -56,7 +64,6 @@
          activeLink.classList.add('active');
      }
  }
-
  // Slider léptető funkciók
  function showNextImage() {
      currentImageIndex = (currentImageIndex + 1) % imageSources.length; // Ciklikus léptetés
@@ -69,55 +76,6 @@
      sliderImage.src = imageSources[currentImageIndex];
      sliderImage.alt = `Sztárfotó ${currentImageIndex + 1}`;
  }
-
- // Ellenőrizzük, hogy minden szükséges elem megvan-e a DOM-ban
- if (hamburgerButton && navElement && navLinksContainer &&
-     articleLink && sliderLink && homepageContent && articleContent && sliderContent &&
-     navLinkHome && navLinkFriss && navLinkSztarhirek && navTitleLink &&
-     sliderImage && prevButton && nextButton) {
-
-     // Eseményfigyelő a "Döbbenetes Hír" (cikk) kártya linkre
-     articleLink.addEventListener('click', (event) => {
-         event.preventDefault(); // Megakadályozza az oldal ugrását a #hash-re
-         showArticle();
-         closeMobileMenu(); // Mobil menü bezárása kattintáskor
-     });
-
-     // Eseményfigyelő a "Sztárfotók" (slider) kártya linkre
-     sliderLink.addEventListener('click', (event) => {
-         event.preventDefault();
-         showSlider();
-         closeMobileMenu(); // Mobil menü bezárása kattintáskor
-     });
-
-     // Eseményfigyelő a "Kezdőlap" nav linkre
-     navLinkHome.addEventListener('click', (event) => {
-         event.preventDefault();
-         showHomepage();
-         closeMobileMenu();
-     });
-
-     // Eseményfigyelő a "Pletyka Portál" cím linkre (vissza a kezdőlapra)
-     navTitleLink.addEventListener('click', (event) => {
-         event.preventDefault();
-         showHomepage();
-         closeMobileMenu();
-     });
-
-     // Eseményfigyelő a "Friss Pletykák" nav linkre
-     navLinkFriss.addEventListener('click', (event) => {
-         event.preventDefault();
-         showArticle();
-         closeMobileMenu();
-     });
-
-     // Eseményfigyelő a "Sztárhírek" nav linkre
-     navLinkSztarhirek.addEventListener('click', (event) => {
-         event.preventDefault();
-         showSlider();
-         closeMobileMenu();
-     });
-
      // Eseményfigyelők a slider gombokhoz
      nextButton.addEventListener('click', showNextImage);
      prevButton.addEventListener('click', showPrevImage);
@@ -126,17 +84,3 @@
      navLinksContainer.querySelectorAll('a').forEach(link => {
          link.addEventListener('click', closeMobileMenu);
      });
-
- } else {
-     console.error("Hiba: A tartalomváltáshoz vagy a sliderhez szükséges elemek egyike nem található a DOM-ban!");
-     // Log which elements are missing for easier debugging
-     console.log({
-         hamburgerButton, navElement, navLinksContainer,
-         articleLink, sliderLink, homepageContent, articleContent, sliderContent,
-         navLinkHome, navLinkFriss, navLinkSztarhirek, navTitleLink,
-         sliderImage, prevButton, nextButton
-     });
- }
-
- // Kezdeti állapot beállítása (Kezdőlap mutatása)
- showHomepage();

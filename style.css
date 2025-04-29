@@ -287,6 +287,36 @@ header img {
     right: 10px;
 }
 
+.highlights {
+    border: 2px solid #555;
+}
+
+.highlights a{
+    background-image: url('kepek/szf8.jpg'); /* HÁTTÉRKÉP BEÁLLÍTÁSA - CSERÉLD LE! */
+    background-size: cover;
+    background-position: center;
+    border-radius: 5px; /* Lekerekítés a linken belül */
+    justify-content: flex-end; /* Tartalom tolása az aljára */
+    position: relative; /* Overlay pozicionáláshoz */
+    overflow: hidden; /
+}
+
+.highlights .card-content{
+    background-image: linear-gradient(rgba(3, 3, 3, 0), rgba(0, 0, 0, 0.7)); /* Féláttetsző sötét háttér */
+    padding: 20px; /* Nagyobb padding */
+    width: 100%; /* Teljes szélesség */
+    box-sizing: border-box; /* Padding beleszámít a szélességbe */
+    flex-grow: 0; /* Ne nőjön a tartalom */
+}
+.highlights h2{
+    color: #fff; /* Fehér szöveg */
+    font-size: 1.8em;
+    text-transform: uppercase;
+    text-align: center;
+    font-weight: 900; /* Vastagabb */
+    margin-bottom: 10px;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.5); /* Szövegárnyék olvashatósághoz */
+}
 
 /* Reszponzivitás és Hamburger Menü Stílusok */
 @media (max-width: 768px) {
