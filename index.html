@@ -1,15 +1,17 @@
 <!DOCTYPE html>
 <html lang="hu">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pletyka Portál - Kezdőlap</title>
     <link rel="stylesheet" href="./style.css">
 </head>
+
 <body>
-    
+
     <nav>
-        <a href="#home" class="nav-title">Pletyka Portál</a> <!-- Changed href to #home -->
+        <a href="index.html" class="nav-title">Púdermentes</a> 
         <button class="hamburger-menu" aria-label="Menü megnyitása/bezárása" aria-expanded="false">
             <span></span>
             <span></span>
@@ -20,6 +22,7 @@
             <li><a href="index.html" class="active">Kezdőlap</a></li>
             <li><a href="focikk.html">Friss Pletykák</a></li>
             <li><a href="sztarfotok.html">Sztárfotók</a></li>
+            <li><a href="heti_osszefoglalo.html" >Heti Pletyka</a></li>
             <li><a href="#kapcsolat">Kapcsolat</a></li>
         </ul>
     </nav>
@@ -34,62 +37,66 @@
             </a>
         </div>
         <!-- Többi kártya -->
+        <div class="grid-item large highlights_heti">
+            <a href="heti_osszefoglalo.html">
+                <div class="card-content">
+                    <h2>Heti Összefoglaló</h2>
+                    <p>A hét legérdekesebb pletykáinak összefoglalója itt olvasható.</p>
+                </div>
+            </a>
+        </div>
+        <div class="grid-item small">
+            <a href="#">
+                <img src="https://via.placeholder.com/200x120?text=Gyors+Pletyka" alt="Gyors Pletyka">
+                <div class="card-content">
+                    <h2>Gyors Pletyka</h2>
+                </div>
+            </a>
+        </div>
+        <!-- Sztárfotók kártya: ID hozzáadva a linkhez -->
+        <div class="grid-item medium highlights_fotok">
+            <a href="./sztarfotok.html" id="show-slider-link">
+                <div class="card-content">
+                    <h2>Sztárfotók</h2>
+                </div>
+            </a>
+        </div>
+        <div class="grid-item small">
+            <a href="#">
+                <img src="https://via.placeholder.com/200x120?text=Napi+Ciki" alt="Napi Ciki">
+                <div class="card-content">
+                    <h2>Napi cikk</h2>
+                </div>
+            </a>
+        </div>
         <div class="grid-item medium">
-             <a href=""> <!-- Ennek a linknek nem kell ID, mert nem vált nézetet -->
+            <a href=""> <!-- Ennek a linknek nem kell ID, mert nem vált nézetet -->
                 <img src="https://via.placeholder.com/300x180?text=Exkluzív+Interjú" alt="Exkluzív Interjú">
                 <div class="card-content">
                     <h2>Exkluzív Interjú</h2>
                 </div>
             </a>
         </div>
-        <div class="grid-item small">
-             <a href="#">
-                <img src="https://via.placeholder.com/200x120?text=Gyors+Pletyka" alt="Gyors Pletyka">
-                 <div class="card-content">
-                    <h2>Gyors Pletyka</h2>
-                 </div>
-            </a>
-        </div>
-         <!-- Sztárfotók kártya: ID hozzáadva a linkhez -->
-         <div class="grid-item medium highlights">
-             <a href="./sztarfotok.html" id="show-slider-link"> 
-                 <div class="card-content">
-                    <h2>Sztárfotók</h2>
-                 </div>
-            </a>
-        </div>
-         <div class="grid-item small">
-             <a href="#">
-                <img src="https://via.placeholder.com/200x120?text=Napi+Ciki" alt="Napi Ciki">
-                 <div class="card-content">
-                    <h2>Napi Ciki</h2>
-                 </div>
-            </a>
-        </div>
-        <div class="grid-item large">
-             <a href="#">
-                <img src="https://via.placeholder.com/400x180?text=Heti+Összefoglaló" alt="Heti Összefoglaló">
-                 <div class="card-content">
-                    <h2>Heti Összefoglaló</h2>
-                    <p>A hét legérdekesebb pletykáinak összefoglalója itt olvasható.</p>
-                 </div>
-            </a>
-        </div>
-         <div class="grid-item medium">
-             <a href="#">
+        <div class="grid-item medium">
+            <a href="#">
                 <img src="https://via.placeholder.com/300x180?text=Programajánló" alt="Programajánló">
-                 <div class="card-content">
+                <div class="card-content">
                     <h2>Programajánló</h2>
-                 </div>
+                </div>
             </a>
         </div>
     </main>
 
     <!-- Image Slider Tartalma (Alapból rejtett) -->
-   
+
 
     <!-- Ide jöhetne egy lábléc (footer) később -->
+    <footer>
+        <p>Főszerkesztő: Jung Dorka (Nemzeti Napirossz)</p>
+        <p>Weblap és ötlet kivitelezés: Szekely KFT (Szekely Hunor, Szekely Balazs)</p>
+    </footer>
 
     <script src="./script.js"></script>
 </body>
+
 </html>

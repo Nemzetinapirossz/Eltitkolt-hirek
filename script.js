@@ -36,51 +36,63 @@
  const nextButton = document.getElementById('next-slide-button');
 
  // Képek forrásai a sliderhez (helyettesítsd valós URL-ekkel)
+// ... existing code ...
+ // Képek forrásai a sliderhez (helyettesítsd valós URL-ekkel)
  const imageSources = [
-     './kepek/szf1.jpg',
-     './kepek/szf2.jpg',
-     './kepek/szf3.jpg',
-     './kepek/szf4.jpg',
-     './kepek/szf5.jpg',
-     './kepek/szf6.jpg',
-     './kepek/szf7.jpg',
-     './kepek/szf8.jpg',
-     './kepek/szf9.jpg',
-     './kepek/szf10.jpg',
-     './kepek/szf11.jpg',
-     './kepek/szf12.jpg',
-     './kepek/szf13.jpg',
-     './kepek/szf14.jpg',
- ];
- let currentImageIndex = 0;
- // Funkció az aktív nav link beállításához
- function setActiveNavLink(activeLink) {
-     // Összes linkről eltávolítjuk az 'active' class-t
-     document.querySelectorAll('nav ul.nav-links li a').forEach(link => {
-         link.classList.remove('active');
-     });
-     // Hozzáadjuk az 'active' class-t a megadott linkhez
-     if (activeLink) {
-         activeLink.classList.add('active');
-     }
- }
- // Slider léptető funkciók
- function showNextImage() {
-     currentImageIndex = (currentImageIndex + 1) % imageSources.length; // Ciklikus léptetés
-     sliderImage.src = imageSources[currentImageIndex];
-     sliderImage.alt = `Sztárfotó ${currentImageIndex + 1}`;
- }
+    './kepek/szf1.jpg',
+    './kepek/szf2.jpg',
+    './kepek/szf3.jpg',
+    './kepek/szf4.jpg',
+    './kepek/szf5.jpg',
+    './kepek/szf6.jpg',
+    './kepek/szf7.jpg',
+    './kepek/szf8.jpg',
+    './kepek/szf9.jpg',
+    './kepek/szf10.jpg',
+    './kepek/szf11.jpg',
+    './kepek/szf12.jpg',
+    './kepek/szf13.jpg',
+    './kepek/szf14.jpg',
+    './kepek/szf15.jpg',
+    './kepek/szf16.jpg',
+    './kepek/szf17.jpg',
+    './kepek/szf18.jpg',
+    './kepek/szf18.jpg',
+    './kepek/szf19.jpg',
+    './kepek/szf20.jpg',
+];
+let currentImageIndex = 0;
 
- function showPrevImage() {
-     currentImageIndex = (currentImageIndex - 1 + imageSources.length) % imageSources.length; // Ciklikus léptetés visszafelé
-     sliderImage.src = imageSources[currentImageIndex];
-     sliderImage.alt = `Sztárfotó ${currentImageIndex + 1}`;
- }
-     // Eseményfigyelők a slider gombokhoz
-     nextButton.addEventListener('click', showNextImage);
-     prevButton.addEventListener('click', showPrevImage);
+// Function to set the image source and alt text
+function displayCurrentImage() {
+   if (sliderImage && imageSources.length > 0) { // Ensure sliderImage and sources are available
+       sliderImage.src = imageSources[currentImageIndex];
+       sliderImage.alt = `Sztárfotó ${currentImageIndex + 1}`;
+   }
+}
 
-     // Eseményfigyelő az összes nav linkre a mobil menü bezárásához
-     navLinksContainer.querySelectorAll('a').forEach(link => {
-         link.addEventListener('click', closeMobileMenu);
-     });
+// Slider léptető funkciók
+function showNextImage() {
+   if (!imageSources || imageSources.length === 0) return; // Guard clause for empty image array
+   currentImageIndex = (currentImageIndex + 1) % imageSources.length; // Ciklikus léptetés
+   displayCurrentImage();
+}
+
+function showPrevImage() {
+   if (!imageSources || imageSources.length === 0) return; // Guard clause for empty image array
+   currentImageIndex = (currentImageIndex - 1 + imageSources.length) % imageSources.length; // Ciklikus léptetés visszafelé
+   displayCurrentImage();
+}
+
+// Initial display of the first image on page load
+// Ensure sliderImage is present before attempting to set its src
+if (sliderImage) {
+   displayCurrentImage();
+}
+
+// Eseményfigyelők a slider gombokhoz
+// Ensure buttons and sliderImage are present before adding listeners
+if (sliderImage && nextButton && prevButton) {
+   nextButton.addEventListener('click', showNextImage);
+   prevButton.addEventListener('click', showPrevImage);
+}

@@ -3,7 +3,15 @@ body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     line-height: 1.6;
     background-color: #f4f4f4;
+    display: flex; /* Make body a flex container */
+    flex-direction: column; /* Stack children vertically */
+    min-height: 100vh; /* Ensure body is at least full viewport height */
 }
+
+main {
+    flex-grow: 1; /* Allow the main content to expand and fill available space */
+}
+
 /* Navigációs Sáv */
 nav {
     background-color: #333;
@@ -287,11 +295,11 @@ header img {
     right: 10px;
 }
 
-.highlights {
+.highlights_fotok {
     border: 2px solid #555;
 }
 
-.highlights a{
+.highlights_fotok a{
     background-image: url('kepek/szf8.jpg'); /* HÁTTÉRKÉP BEÁLLÍTÁSA - CSERÉLD LE! */
     background-size: cover;
     background-position: center;
@@ -301,14 +309,14 @@ header img {
     overflow: hidden; /
 }
 
-.highlights .card-content{
+.highlights_fotok .card-content{
     background-image: linear-gradient(rgba(3, 3, 3, 0), rgba(0, 0, 0, 0.7)); /* Féláttetsző sötét háttér */
     padding: 20px; /* Nagyobb padding */
     width: 100%; /* Teljes szélesség */
     box-sizing: border-box; /* Padding beleszámít a szélességbe */
     flex-grow: 0; /* Ne nőjön a tartalom */
 }
-.highlights h2{
+.highlights_fotok h2{
     color: #fff; /* Fehér szöveg */
     font-size: 1.8em;
     text-transform: uppercase;
@@ -316,6 +324,106 @@ header img {
     font-weight: 900; /* Vastagabb */
     margin-bottom: 10px;
     text-shadow: 1px 1px 3px rgba(0,0,0,0.5); /* Szövegárnyék olvashatósághoz */
+}
+
+.highlights_heti a{
+    background-image: url('black-hole-seen-from-a-planet-illustration-royalty-free-illustration-1736172910.jpg'); /* HÁTTÉRKÉP BEÁLLÍTÁSA - CSERÉLD LE! */
+    background-size: cover;
+    background-position: center;
+    border-radius: 5px; /* Lekerekítés a linken belül */
+    justify-content: flex-end; /* Tartalom tolása az aljára */
+    position: relative; /* Overlay pozicionáláshoz */
+    overflow: hidden; /
+}
+
+.highlights_heti .card-content{
+    background-image: linear-gradient(rgba(3, 3, 3, 0), rgba(0, 0, 0, 0.7)); /* Féláttetsző sötét háttér */
+    padding: 20px; /* Nagyobb padding */
+    width: 100%; /* Teljes szélesség */
+    box-sizing: border-box; /* Padding beleszámít a szélességbe */
+    flex-grow: 0; /* Ne nőjön a tartalom */
+}
+.highlights_heti h2{
+    color: #fff; /* Fehér szöveg */
+    font-size: 1.8em;
+    text-transform: uppercase;
+    text-align: center;
+    font-weight: 900; /* Vastagabb */
+    margin-bottom: 10px;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.5); /* Szövegárnyék olvashatósághoz */
+}
+.highlights_heti p{
+    color: #fff; /* Fehér szöveg */
+    font-size: 1em;
+    text-transform: lowercase;
+    text-align: center;
+    font-weight: 500; /* Vastagabb */
+    margin-bottom: 10px; 
+}
+
+
+/* ... existing styles ... */
+
+/* Styles for Heti Osszefoglalo page */
+.weekly-summary-main {
+    padding: 30px 0; /* Adds top and bottom spacing for the whole summary section */
+}
+
+.summary-article {
+    max-width: 900px; /* Matches focikk article width */
+    margin: 0 auto;   /* Centers the article block */
+    padding: 30px;
+    background-color: #fff;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    border: 1px solid #ddd;
+    border-radius: 8px;
+}
+
+.summary-article h2 {
+    text-align: center;
+    font-size: 2em; /* Slightly adjusted from focikk.html's 2.2em for visual hierarchy */
+    margin-top: 0;
+    margin-bottom: 20px;
+    color: #333;
+    border-bottom: 2px solid #eee;
+    padding-bottom: 15px;
+}
+
+.summary-article p {
+    line-height: 1.7;
+    text-align: justify;
+    margin-bottom: 1.5em;
+    color: #444;
+}
+
+.summary-article-image {
+    max-width: 100%; /* Responsive image within the article */
+    height: auto;
+    display: block;
+    margin: 0 auto 20px auto; /* Centered, with bottom margin before text */
+    border-radius: 5px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+}
+
+.weekly-summary-main > hr {
+    border: 0;
+    height: 1px;
+    background-color: #ddd; /* Light line color */
+    margin: 30px auto;     /* Spacing above and below the HR */
+    width: 80%;            /* HR is not full width for a softer separation */
+}
+
+footer {
+    background-color: #333; /* Sötét háttér, mint a nav */
+    color: #fff; /* Világos szöveg, mint a nav */
+    padding: 20px 15px; /* Megfelelő belső térköz */
+    text-align: center; /* Szöveg középre igazítása */
+    font-size: 0.9em; /* Kicsit kisebb betűméret */
+    margin-top: 30px; /* Térköz a felette lévő tartalomtól */
+}
+
+footer p {
+    margin: 5px 0; /* Kis térköz a bekezdések között */
 }
 
 /* Reszponzivitás és Hamburger Menü Stílusok */
