@@ -413,6 +413,41 @@ header img {
     width: 80%;            /* HR is not full width for a softer separation */
 }
 
+/* Styles for Gyors Pletyka (Quick Gossip) page */
+.quick-gossip-main {
+    max-width: 900px; /* Consistent with other main content areas */
+    margin: 30px auto;
+    padding: 0 20px; /* Padding on the sides of the container */
+}
+
+.gossip-snippet {
+    background-color: #fff;
+    border-radius: 6px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+    border: 1px solid #eee;
+    padding: 15px 20px;
+    margin-bottom: 20px; /* Space between snippets */
+}
+
+.gossip-snippet:last-child {
+    margin-bottom: 0; /* No bottom margin for the last snippet */
+}
+
+.gossip-snippet h3 {
+    font-size: 1.4em;
+    color: #333;
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
+.gossip-snippet p {
+    font-size: 0.95em; /* Slightly larger than default small text for readability */
+    color: #555;
+    line-height: 1.6;
+    margin-bottom: 0;
+}
+
+
 footer {
     background-color: #333; /* Sötét háttér, mint a nav */
     color: #fff; /* Világos szöveg, mint a nav */
