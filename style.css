@@ -578,7 +578,7 @@ footer p {
     max-width: 900px;
     margin: 30px auto;
     padding: 50px 20px; /* Megnövelt belső térköz */
-    background-color: #fff;
+   background-image: url(porszivo.jpg);
     box-shadow: 0 5px 15px rgba(0,0,0,0.2); /* Erősebb árnyék */
     border: 1px solid #ccc; /* Kicsit sötétebb keret */
     border-radius: 10px; /* Lekerekítettebb sarkok */
@@ -657,14 +657,12 @@ footer p {
     position: relative; /* Z-index beállításhoz */
     z-index: 2; /* Tartalom az áttetsző réteg felett */
 }
-
 /* Reszponzív beállítások */
 @media (max-width: 768px) {
     .maintenance-main {
         padding: 30px 15px;
         min-height: 300px;
     }
-    /* Eltávolítottuk az ikon reszponzív stílusait */
     .maintenance-message-container h2 {
         font-size: 2em;
         margin-bottom: 15px;
@@ -673,6 +671,9 @@ footer p {
     .maintenance-message-container p {
         font-size: 1em;
     }
+     .maintenance-image { /* Kisebb kép mobilon */
+        max-width: 200px;
+     }
 }
 
 @media (max-width: 480px) {
@@ -683,26 +684,11 @@ footer p {
      .maintenance-main {
         min-height: 250px;
      }
+     .maintenance-image { /* Még kisebb kép nagyon kis képernyőn */
+        max-width: 150px;
+     }
 }
 
-/* Reszponzív beállítások */
-@media (max-width: 768px) {
-    .maintenance-main {
-        padding: 30px 15px;
-        min-height: 300px;
-    }
-    .maintenance-icon {
-        font-size: 3em;
-        margin-bottom: 15px;
-    }
-    .maintenance-message-container h2 {
-        font-size: 2em;
-        margin-bottom: 15px;
-    }
-    .maintenance-message-container p {
-        font-size: 1em;
-    }
-}
 
 
 /* Add this to your existing style.css */
