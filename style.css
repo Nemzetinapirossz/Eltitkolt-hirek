@@ -362,6 +362,44 @@ header img {
 }
 
 
+
+.highlights_napi a{
+    background-image: url('unitato.jpg'); /* HÁTTÉRKÉP BEÁLLÍTÁSA - CSERÉLD LE! */
+    background-size: cover;
+    background-position: center;
+    border-radius: 5px; /* Lekerekítés a linken belül */
+    justify-content: flex-end; /* Tartalom tolása az aljára */
+    position: relative; /* Overlay pozicionáláshoz */
+    overflow: hidden; /
+}
+
+.highlights_napi .card-content{
+    background-image: linear-gradient(rgba(3, 3, 3, 0), rgba(0, 0, 0, 0.7)); /* Féláttetsző sötét háttér */
+    padding: 20px; /* Nagyobb padding */
+    width: 100%; /* Teljes szélesség */
+    box-sizing: border-box; /* Padding beleszámít a szélességbe */
+    flex-grow: 0; /* Ne nőjön a tartalom */
+}
+.highlights_napi h2{
+    color: #fff; /* Fehér szöveg */
+    font-size: 1.8em;
+    text-transform: uppercase;
+    text-align: center;
+    font-weight: 900; /* Vastagabb */
+    margin-bottom: 10px;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.5); /* Szövegárnyék olvashatósághoz */
+}
+.highlights_napi p{
+    color: #fff; /* Fehér szöveg */
+    font-size: 1em;
+    text-transform: lowercase;
+    text-align: center;
+    font-weight: 500; /* Vastagabb */
+    margin-bottom: 10px; 
+}
+
+
+
 .highlights_gyors a{
     background-image: url('shrodinger_macska.jpg'); /* HÁTTÉRKÉP BEÁLLÍTÁSA - CSERÉLD LE! */
     background-size: cover;
@@ -390,6 +428,45 @@ header img {
     text-shadow: 1px 1px 3px rgba(0,0,0,0.5); /* Szövegárnyék olvashatósághoz */
 }
 .highlights_gyors p{
+    color: #fff; /* Fehér szöveg */
+    font-size: 1em;
+    text-transform: lowercase;
+    text-align: center;
+    font-weight: 500; /* Vastagabb */
+    margin-bottom: 10px; 
+}
+
+
+
+.highlights_archiv a{
+    background-image: url(secret.jpg);
+    backdrop-filter: blur(2rem); /* HÁTTÉRKÉP BEÁLLÍTÁSA - CSERÉLD LE! */
+    background-size: cover;
+    background-position: center;
+    border-radius: 5px; /* Lekerekítés a linken belül */
+    justify-content: flex-end; /* Tartalom tolása az aljára */
+    position: relative; /* Overlay pozicionáláshoz */
+    overflow: hidden; /
+}
+
+.highlights_archiv .card-content{
+    background-image: linear-gradient(rgba(3, 3, 3, 0), rgba(0, 0, 0, 0.7)); /* Féláttetsző sötét háttér */
+    padding: 20px; /* Nagyobb padding */
+    width: 100%; /* Teljes szélesség */
+    box-sizing: border-box; /* Padding beleszámít a szélességbe */
+    flex-grow: 0; /* Ne nőjön a tartalom */
+}
+
+.highlights_archiv h2{
+    color: #fff; /* Fehér szöveg */
+    font-size: 1.8em;
+    text-transform: uppercase;
+    text-align: center;
+    font-weight: 900; /* Vastagabb */
+    margin-bottom: 10px;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.5); /* Szövegárnyék olvashatósághoz */
+}
+.highlights_archiv p{
     color: #fff; /* Fehér szöveg */
     font-size: 1em;
     text-transform: lowercase;
@@ -497,6 +574,267 @@ footer {
 footer p {
     margin: 5px 0; /* Kis térköz a bekezdések között */
 }
+.maintenance-main {
+    max-width: 900px;
+    margin: 30px auto;
+    padding: 50px 20px; /* Megnövelt belső térköz */
+    background-color: #fff;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2); /* Erősebb árnyék */
+    border: 1px solid #ccc; /* Kicsit sötétebb keret */
+    border-radius: 10px; /* Lekerekítettebb sarkok */
+    text-align: center;
+    min-height: 500px; /* Megnövelt minimális magasság */
+    display: flex;
+    flex-direction: column; /* Elemek függőlegesen egymás alá */
+    align-items: center;
+    justify-content: center;
+    /* Opcionális: Háttérkép vagy minta */
+    /* background-image: url('path/to/your/maintenance-pattern.png'); */
+    /* background-size: cover; */
+    /* background-blend-mode: overlay; */
+    position: relative;
+    overflow: hidden;
+}
+
+/* Opcionális: Áttetsző fehér réteg a háttérkép felett */
+.maintenance-main::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(255, 255, 255, 0.8); /* Féláttetsző fehér */
+    z-index: 1; /* Háttérkép felett, tartalom alatt */
+}
+
+.maintenance-message-container {
+    position: relative;
+    z-index: 2; /* Tartalom az áttetsző réteg felett */
+}
+
+/* Eltávolítottuk a .maintenance-icon stílusokat és az @keyframes spin animációt */
+
+.maintenance-message-container h2 {
+    font-size: 3em; /* Nagyobb címsor méret */
+    /* color: #d9534f; /* Eredeti piros szín */
+    color: #a5a5a5; /* Sötétebb szöveg a jobb kontrasztért a csíkos háttéren */
+    margin-top: 0;
+    margin-bottom: 20px; /* Megnövelt alsó margó */
+    text-transform: uppercase;
+    font-weight: bold; /* Félkövér szöveg */
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.2); /* Szöveg árnyék */
+
+    /* Construction signal background */
+    background-image: repeating-linear-gradient(
+        45deg,
+        #ffc107, /* Sárga */
+        #ffc107 15px, /* Sárga csík szélessége */
+        #212529 15px, /* Fekete */
+        #212529 30px /* Fekete csík szélessége */
+    );
+    padding: 10px 20px; /* Padding a szöveg körül */
+    border-radius: 5px; /* Lekerekített sarkok a háttérnek */
+    display: inline-block; /* Hogy a háttér csak a szöveg mögött legyen */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.3); /* Árnyék a háttérnek */
+}
+
+.maintenance-message-container p {
+    font-size: 1.3em; /* Kicsit nagyobb bekezdés szöveg */
+    color: #333; /* Sötétebb szöveg szín */
+    line-height: 1.6;
+    margin-bottom: 0;
+}
+
+/* Új stílus a karbantartás oldali képhez */
+.maintenance-image {
+    max-width: 300px; /* Kisebb maximális szélesség */
+    height: auto; /* Magasság automatikus, hogy megőrizze az arányokat */
+    display: block; /* Középre igazításhoz */
+    margin: 20px 3em; /* Térköz a szöveg felett és alatt, középre igazítás */
+    border-radius: 8px; /* Lekerekített sarkok */
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1); /* Árnyék */
+    position: relative; /* Z-index beállításhoz */
+    z-index: 2; /* Tartalom az áttetsző réteg felett */
+}
+
+/* Reszponzív beállítások */
+@media (max-width: 768px) {
+    .maintenance-main {
+        padding: 30px 15px;
+        min-height: 300px;
+    }
+    /* Eltávolítottuk az ikon reszponzív stílusait */
+    .maintenance-message-container h2 {
+        font-size: 2em;
+        margin-bottom: 15px;
+        padding: 8px 15px; /* Kisebb padding mobilon */
+    }
+    .maintenance-message-container p {
+        font-size: 1em;
+    }
+}
+
+@media (max-width: 480px) {
+     .maintenance-message-container h2 {
+        font-size: 1.5em; /* Még kisebb cím mobilon */
+        padding: 5px 10px;
+     }
+     .maintenance-main {
+        min-height: 250px;
+     }
+}
+
+/* Reszponzív beállítások */
+@media (max-width: 768px) {
+    .maintenance-main {
+        padding: 30px 15px;
+        min-height: 300px;
+    }
+    .maintenance-icon {
+        font-size: 3em;
+        margin-bottom: 15px;
+    }
+    .maintenance-message-container h2 {
+        font-size: 2em;
+        margin-bottom: 15px;
+    }
+    .maintenance-message-container p {
+        font-size: 1em;
+    }
+}
+
+
+/* Add this to your existing style.css */
+
+.archive-main {
+    max-width: 1200px; /* Max szélesség a tartalomnak */
+    margin: 30px auto; /* Középre igazítás és térköz */
+    padding: 0 20px; /* Oldalsó padding */
+}
+
+.archive-main h2 {
+    text-align: center;
+    font-size: 2em;
+    margin-bottom: 30px;
+    color: #333;
+    border-bottom: 2px solid #eee;
+    padding-bottom: 15px;
+}
+
+.archive-grid {
+    display: grid;
+    /* Alapértelmezett oszlopok: automatikusan kitöltik a rendelkezésre álló helyet, min 250px szélességgel */
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px; /* Térköz az elemek között */
+}
+
+.archive-item {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    text-decoration: none; /* Link stílus eltávolítása, ha az elem link */
+    color: inherit; /* Szöveg szín öröklése */
+}
+
+.archive-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+}
+
+.archive-item img {
+    filter: blur(2rem);
+    width: 100%;
+    height: 180px; /* Alapértelmezett kép magasság */
+    object-fit: cover; /* Kép kitölti a rendelkezésre álló helyet */
+    display: block;
+}
+
+.archive-item .item-content {
+    padding: 15px;
+    flex-grow: 1; /* Tartalom kitölti a maradék helyet */
+    display: flex;
+    flex-direction: column;
+}
+
+.archive-item h3 {
+    margin-top: 0;
+    margin-bottom: 10px;
+    font-size: 1.2em;
+    color: #333;
+}
+
+.archive-item p {
+    margin-bottom: 0;
+    color: #555;
+    font-size: 0.9em;
+    flex-grow: 1;
+}
+
+/* Méret variációk a "véletlenszerűséghez" */
+.archive-item.small {
+    /* Az alapértelmezett méretet használja, vagy kisebb kép magasság */
+    grid-column: span 1;  /* Alapértelmezett 1 oszlop */
+}
+
+.archive-item.medium {
+    /* grid-column: span 1; */ /* Alapértelmezett 1 oszlop */
+    /* Kicsit magasabb kép vagy több tartalom */
+    .archive-item img {
+        height: 220px;
+    }
+}
+
+.archive-item.large {
+    grid-column: span 2; /* Két oszlopot foglal el */
+     .archive-item img {
+        height: 250px;
+    }
+}
+
+/* Reszponzív beállítások az archív rácshoz */
+@media (max-width: 768px) {
+    .archive-grid {
+        /* Kisebb képernyőn 2 oszlop */
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        gap: 15px;
+    }
+     .archive-item.large {
+        grid-column: span 1; /* Mobilon a nagy elemek is csak 1 oszlopot foglalnak */
+     }
+     .archive-item img {
+        height: 150px; /* Kisebb kép magasság mobilon */
+     }
+     .archive-item.medium img {
+        height: 180px;
+     }
+     .archive-item.large img {
+        height: 200px;
+     }
+}
+
+@media (max-width: 480px) {
+    .archive-grid {
+        /* Nagyon kis képernyőn 1 oszlop */
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+        gap: 10px;
+    }
+     .archive-item img {
+        height: 120px; /* Még kisebb kép magasság */
+     }
+      .archive-item.medium img {
+        height: 150px;
+     }
+     .archive-item.large img {
+        height: 180px;
+     }
+}
+
+
 
 /* Reszponzivitás és Hamburger Menü Stílusok */
 @media (max-width: 768px) {
